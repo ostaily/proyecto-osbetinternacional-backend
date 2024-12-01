@@ -18,7 +18,7 @@ class ImpuestosController extends Controller
         $impuesto = new impuestos;
         $impuesto->nombre=$request->nombre;
         $impuesto->valor=$request->valor;
-        $impuesto->activo=$request->activo;
+        $impuesto->activo=1;
         $impuesto->save();
 
         return response()->json([
@@ -48,7 +48,7 @@ class ImpuestosController extends Controller
         //Actualizacion del cliente
         $impuesto->nombre=$request->nombre;
         $impuesto->valor=$request->valor;
-        $impuesto->activo=$request->activo;
+        // $impuesto->activo=$request->activo;
         $impuesto->save();
 
         return response()->json([

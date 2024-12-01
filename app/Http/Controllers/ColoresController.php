@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Modelos
 use App\Models\colores;
+
 class ColoresController extends Controller
 {
     //
-    /**
-     * Guarda los colores 
+     /**
+     * Guarda los Colores
      */
     public function save(Request $request){
     
-        //Creacion del color
+        //Creacion de colores
         $color = new colores;
         $color->nombre=$request->nombre;
         $color->save();
@@ -61,7 +62,7 @@ class ColoresController extends Controller
 
         return response()->json([
             'status'=> '200',
-            'message'=> 'Color eliminado',
+            'message'=> 'Color eliminada',
         ]);
     }
 

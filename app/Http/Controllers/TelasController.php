@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 //Modelos
 use App\Models\telas;
 
 class TelasController extends Controller
 {
+    //
      /**
      * Guarda las telas 
      */
@@ -16,7 +16,7 @@ class TelasController extends Controller
     
         //Creacion de la tela
         $tela = new telas;
-        $tela->nombre = $request->nombre;
+        $tela->nombre=$request->nombre;
         $tela->save();
 
         return response()->json([
@@ -43,8 +43,8 @@ class TelasController extends Controller
      */
     public function update(Request $request){
         $tela = telas::find($request->id);
-        //Actualizacion de la tela
-        $tela->nombre = $request->nombre;
+        //Actualizacion del cliente
+        $tela->nombre=$request->nombre;
         $tela->save();
 
         return response()->json([
