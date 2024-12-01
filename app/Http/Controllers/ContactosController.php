@@ -3,41 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 //Modelos
 use App\Models\contactos;
 
 class ContactosController extends Controller
 {
-    /**
-     * Guarda los contactos 
+    //
+     /**
+     * Guarda las contacto
      */
     public function save(Request $request){
     
-        //Creacion del contacto
-        $contacto = new contactos;
+        //Creacion de contacto
+        $contacto = new contacto;
         $contacto->nombre=$request->nombre;
-        $contacto->cargo=$request->cargo;
-        $contacto->cliente_id=$request->cliente_id;
-
         $contacto->save();
 
         return response()->json([
             'status'=> '200',
-            'message'=> 'Contacto guardado',
+            'message'=> 'Contacto guardada',
             'result'=> $contacto
         ]);
     }
     
     /**
-     * Obtener todos los contactos
+     * Obtener todas los conctactos
      */
     public function get(Request $request){
 
-        $contactos = contactos::orderBy('nombre')->get();
+        $tallas = contacto::orderBy('nombre')->get();
         return response()->json([
             'status'=> '200',
-            'message'=> $contactos,
+            'message'=> $contacto,
         ]);
     }
     
@@ -45,10 +42,9 @@ class ContactosController extends Controller
      * Actualiza la informacion de un contacto por el ID
      */
     public function update(Request $request){
-        $contacto = contactos::find($request->id);
+        $contacto = contacto::find($request->id);
         //Actualizacion del cliente
         $contacto->nombre=$request->nombre;
-        $contacto->cargo=$request->cargo;
         $contacto->save();
 
         return response()->json([
@@ -61,12 +57,12 @@ class ContactosController extends Controller
      * Elimina un contacto por el ID
      */
     public function delete($id){
-        $contacto = contactos::find($id);
+        $contacto = contacto::find($id);
         $contacto->delete();
 
         return response()->json([
             'status'=> '200',
-            'message'=> 'Contacto eliminado',
+            'message'=> 'Contacto eliminada',
         ]);
     }
 
@@ -74,7 +70,7 @@ class ContactosController extends Controller
      * Muestra la informacion de un contacto por el ID
      */
     public function show($id){
-        $contacto = contactos::find($id);
+        $contacto = contacto::find($id);
         return response()->json([
             'status'=> '200',
             'message'=> $contacto,
